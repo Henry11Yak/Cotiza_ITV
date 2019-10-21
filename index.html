@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/master.css">
+    <title>Software Itval</title>
+</head>
+<body>
+    <h1>Cotizador de ventanas (Receta Aluminio)</h1>
+    <!-- al hacer asi: .item{contenido #$}*12 o numero se crean div con la clase indicada * un número dado -->
+    <section class="imagenes">
+        <div class="container">
+            <div class="item">
+                <input type="button" class="windows" value="V-01" id="v1">
+                <span class="post-overlay" id="fv1">Dar clic para Ingresar datos </span>
+                <!--<p id="nameV1">nombre</p>  -->
+            </div>
+            <div class="item">
+            <input type="button" class="windows" value="V-02" id="v2">
+            <span class="post-overlay" id="fv2">Dar clic para Ingresar datos </span>
+            </div>
+            <div class="item">
+                <input type="button" class="windows" value="V-03" id="v3">
+                <span class="post-overlay" id="fv3">Dar clic para Ingresar datos </span>
+            </div>
+            <div class="item">
+                <input type="button" class="windows" value="V-04" id="v4">
+                <span class="post-overlay" id="fv4">Dar clic para Ingresar datos </span>
+            </div>
+        </div>
+    </section>
+    <!-- action="formuV1"-->
+    <!-- onsubmit="return comprobar()" -->
+    <!-- <form name="formuV1" id="formuV1"  ></form> -->
+   
+    <section id="datos">
+        <div class="form">
+            <span class="titulosF">Ventana Seleccionada</span><input type="text" id="ventana" value="0">
+            <span class="titulosF">Cantidad</span><input type="number" id="cantidad" value="1" placeholder="Cant">
+            <span class="titulosF">Ancho</span><input type="number" id="ancho" value="0" placeholder="Ancho">
+            <span class="titulosF">Altura</span><input type="number" id="altura" value="0" placeholder="Alto">
+            <span class="titulosF">No. C. Fijos</span><input type="number" id="cFijos" value="0" placeholder="num.cfijos">
+            <span class="titulosF">No. Proyectables</span><input type="number" id="numProy" value="0" placeholder="num.proy">
+            <span class="titulosF">No. Vert Bes.</span><input type="number" id="numVert" value="0" placeholder="num.vert">
+            <span class="titulosF">Ancho Proy.(m)</span><input type="number" id="anchoProy" value="0" placeholder="Ancho.P">
+            <span class="titulosF">Alto Proy(m)</span><input type="number" id="altoProy" value="0" placeholder="Alto.P">
+            <span class="titulosF">Espesor Vidrio</span><input type="number" id="espVidrio" value="0" placeholder="espesor">
+            <!-- <button id="btn_guardar" onclick="guardar();valida1();">Guardar</button> -->
+            <button id="btn_guardar" onclick="guardar(); almacena();">Guardar</button>
+            <button id="btn_cancel" onclick="hideForm()">Cancelar</button>
+        </div>
+    </section>
+  
+    <section> 
+        <div class="container-data"> 
+            <table class="tabla">
+                <thead>
+                    <tr>
+                        <th>Ventana</th>
+                        <th>Cantidad</th>
+                        <th>Ancho</th>
+                        <th>Altura</th>
+                        <th>No. C.Fijos</th>
+                        <th>No. Proyectables</th>
+                        <th>No. Vert Bes.</th>
+                        <th>Ancho Proy.(m)</th>
+                        <th>Alto Proy(m)</th>
+                        <th>Espesor Vidrio</th>
+                        <th>Area</th>
+                    </tr>
+                </thead>
+                <tbody id="tablita">
+            
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="recetaAluminio">
+            <div class="container-data2">
+                <table class="tablaAlumino tablaV1">
+                    <thead>
+                        <tr>
+                            <th>Tipo Ventana</th>
+                            <th>Comp</th>
+                            <th>Nombre receta</th>
+                            <th>Cantidad (m)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablitaV1">
+                        <tr>
+                            <th>V-01</th>
+                            <th>1385</th>
+                            <th>MARCO PROYECTABLE</th>
+                            <th id="marcop"></th>
+                        </tr>
+                        <tr>
+                            <th>V-01</th>
+                            <th>1382</th>
+                            <th>INTERMEDIO</th>
+                            <th id="interp"></th>
+                        </tr>
+                        <tr>
+                            <th>V-01</th>
+                            <th>1383</th>
+                            <th>JUNQUILLO</th>
+                            <th id="junqp"></th>
+                        </tr>
+                        <tr>
+                            <th>V-01</th>
+                            <th>1444</th>
+                            <th>ANCLA</th>
+                            <th id="anclap"></th>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="tablaAlumino tablaV2">
+                    <thead>
+                        <tr>
+                            <th>Tipo Ventana</th>
+                            <th>Comp</th>
+                            <th>Nombre receta</th>
+                            <th>Cantidad (m)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablitaV2">
+                        <tr>
+                            <th>V-02</th>
+                            <th>1385</th>
+                            <th>MARCO PROYECTABLE</th>
+                            <th id="marcop2"></th>
+                        </tr>
+                        <tr>
+                            <th>V-02</th>
+                            <th>1384</th>
+                            <th>MARCO DE HOJA</th>
+                            <th id="hojap2"></th>
+                        </tr>
+                        <tr>
+                            <th>V-02</th>
+                            <th>1382</th>
+                            <th>INTERMEDIO</th>
+                            <th id="interp2"></th>
+                        </tr>
+                        <tr>
+                            <th>V-02</th>
+                            <th>1383</th>
+                            <th>JUNQUILLO</th>
+                            <th id="junqp2"></th>
+                        </tr>
+                        <tr>
+                            <th>V-02</th>
+                            <th>1444</th>
+                            <th>ANCLA</th>
+                            <th id="anclap2"></th>
+                        </tr>
+                    </tbody>
+                </table>
+
+            <table class="tablaAlumino tablaV3">
+                    <thead>
+                        <tr>
+                            <th>Tipo Ventana</th>
+                            <th>Comp</th>
+                            <th>Nombre receta</th>
+                            <th>Cantidad (m)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablitaV3">
+                        <tr>
+                            <th>V-03</th>
+                            <th>1385</th>
+                            <th>MARCO PROYECTABLE</th>
+                            <th id="marcop3"></th>
+                        </tr>
+                        <tr>
+                            <th>V-03</th>
+                            <th>1384</th>
+                            <th>MARCO DE HOJA</th>
+                            <th id="hojap3"></th>
+                        </tr>
+                        <tr>
+                            <th>V-03</th>
+                            <th>1382</th>
+                            <th>INTERMEDIO</th>
+                            <th id="interp3"></th>
+                        </tr>
+                        <tr>
+                            <th>V-03</th>
+                            <th>1383</th>
+                            <th>JUNQUILLO</th>
+                            <th id="junqp3"></th>
+                        </tr>
+                        <tr>
+                            <th>V-03</th>
+                            <th>1444</th>
+                            <th>ANCLA</th>
+                            <th id="anclap3"></th>
+                        </tr>
+                    </tbody>
+                </table>
+
+              <table class="tablaAlumino tablaV4">
+                    <thead>
+                        <tr>
+                            <th>Tipo Ventana</th>
+                            <th>Comp</th>
+                            <th>Nombre receta</th>
+                            <th>Cantidad (m)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablitaV4">
+                        <tr>
+                            <th>V-04</th>
+                            <th>1385</th>
+                            <th>MARCO PROYECTABLE</th>
+                            <th id="marcop4"></th>
+                        </tr>
+                        <tr>
+                            <th>V-04</th>
+                            <th>1384</th>
+                            <th>MARCO DE HOJA</th>
+                            <th id="hojap4"></th>
+                        </tr>
+                        <tr>
+                            <th>V-04</th>
+                            <th>1382</th>
+                            <th>INTERMEDIO</th>
+                            <th id="interp4"></th>
+                        </tr>
+                        <tr>
+                            <th>V-04</th>
+                            <th>1383</th>
+                            <th>JUNQUILLO</th>
+                            <th id="junqp4"></th>
+                        </tr>
+                        <tr>
+                            <th>V-04</th>
+                            <th>1444</th>
+                            <th>ANCLA</th>
+                            <th id="anclap4"></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    </section>
+        <script src="script/validate.js"></script>
+</body>
+</html>
